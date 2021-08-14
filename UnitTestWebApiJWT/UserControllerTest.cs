@@ -10,7 +10,7 @@ namespace UnitTestWebApiJWT
     [TestClass]
     public class UserControllerTest
     {
-        private Mock<CustomerDbContext> _mockCustomerDbContext;
+        private Mock<IDataContext> _mockCustomerDbContext;
         private Mock<DbSet<User>> _mockUsers;
         private UserRepository _userRepository;
 
@@ -18,9 +18,10 @@ namespace UnitTestWebApiJWT
         [TestInitialize]
         public void TestInitialize()
         {
-            _mockCustomerDbContext = new Mock<CustomerDbContext>();
+            _mockCustomerDbContext = new Mock<IDataContext>();
             _mockUsers = new Mock<DbSet<User>>();
-            _mockCustomerDbContext.Setup(x => x.Users).Returns(_mockUsers.Object);
+            _mockCustomerDbContext.Setup(x => x.Set<User>()).Returns(_mockUsers.Object);
+           
             _userRepository = new UserRepository(_mockCustomerDbContext.Object);
         }
         [TestCleanup]
@@ -52,9 +53,37 @@ namespace UnitTestWebApiJWT
                     Username = "maria"
                 } 
             }).AsQueryable();
-            SetupTestData(stubData, _mockUsers);
+            SetupTestData<User>(stubData, _mockUsers);
             var actual = _userRepository.GetByUsername(username);
             Assert.AreEqual(stubData.ToList()[0], actual);
+        }
+        public void GetUserAndPassword_ExpectedBoleeanReturned()
+        {
+            var username = "juan";
+            var password = "password";
+            var stubData = (new List<User>
+            { new User
+                {
+                    Email = "juan@gmail.com",
+                    FirstName = "Juan",
+                    LastName = "Perez",
+                    Phone = "8094556767",
+                    Username = "juan",
+                    PasswordHash = "password"
+                },
+                new User
+                {
+                    Email = "maria@gmail.com",
+                    FirstName = "Maria",
+                    LastName = "Perez",
+                    Phone = "8094556767",
+                    Username = "maria",
+                    PasswordHash = "password1"
+                }
+            }).AsQueryable();
+            SetupTestData<User>(stubData, _mockUsers);
+            var actual = _userRepository.IsValid(username,password);
+            Assert.IsTrue(actual);
         }
 
 

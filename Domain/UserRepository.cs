@@ -48,7 +48,7 @@ namespace WebApiJwt.Domain
                 var user = _customerDbContext.Set<User>().SingleOrDefault(u => u.Username == username);
                 return user;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return null;

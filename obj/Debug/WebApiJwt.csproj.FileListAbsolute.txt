@@ -102,8 +102,8 @@ C:\Users\andre\source\repos\WebApiJwt\bin\System.Web.WebPages.Deployment.xml
 C:\Users\andre\source\repos\WebApiJwt\bin\System.Web.WebPages.Razor.xml
 C:\Users\andre\source\repos\WebApiJwt\bin\Antlr3.Runtime.pdb
 C:\Users\andre\source\repos\WebApiJwt\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.csprojAssemblyReference.cache
 C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.csproj.CoreCompileInputs.cache
 C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.csproj.CopyComplete
 C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.dll
 C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.pdb
-C:\Users\andre\source\repos\WebApiJwt\obj\Debug\WebApiJwt.csprojAssemblyReference.cache
